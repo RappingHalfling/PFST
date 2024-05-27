@@ -49,7 +49,8 @@ line 104| data_root = 'path to test data'
 Мы проводили адаптацию между наборами ldalcmix (Смесь landcover и LoveDA) в качестве source набора                                                                                                                                                                     
 И набора merged (Смесь картинок train и public) в качестве target
 Ссылки на наборы:
-(Будут позже)
+[ldalcmix]()
+[merged](https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing)
 
 ### Обучение и валидация
 Обучение запускается командой:
