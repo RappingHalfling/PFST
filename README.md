@@ -53,9 +53,10 @@ line 104| data_root = 'path to test data'
 
 Мы проводили адаптацию между наборами ldalcmix (Смесь landcover и LoveDA) в качестве source набора                                                                                                                                                                     
 И набора merged (Смесь картинок train и public) в качестве target
+
 Ссылки на наборы:
 [ldalcmix](https://drive.google.com/file/d/1NfTUi4JVgX83nMnlmM8r8plO9rzWUcyD/view?usp=sharing)
-[merged](https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing](https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing)
+[merged](https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing)
 
 ### Обучение и валидация
 Обучение запускается командой:
@@ -64,11 +65,10 @@ python3 tools/train.py configs/pfst/pfst_rucode_RG3_deeplabv3plus_r50-d8.py
 ```
 Валидация на test наборе
 
+Для валидации требуется указать путь к весам модели --work-dir. [Ссылка на веса обученной модели](https://drive.google.com/file/d/1Teha1BLkGBaMgKfDL3YT1RtLVwRIZfQO/view?usp=sharing)
+
 ```shell
 python3 tools/test.py configs/pfst/pfst_rucode_RG3_deeplabv3plus_r50-d8.py work_dirs/path_to_checkpoint --work-dir work_dirs/path_to_dir_with_checkpoint --show-dir test_rucode --revise_checkpoint_key=True --eval='mIoU' --opacity 1
 ```
 После получения масок предикта требуется конвертировать их в .npy array, который можно получить, запустив скрипт convertor.py, внутри которого также требуется указать путь path_to_dir - расположение предиктов.
-
-Ссылка на нашу модель: 
-(Будет позже)
 
