@@ -46,8 +46,8 @@ line 72| data_root_target = 'path to target data'
 line 104| data_root = 'path to test data'
 ```
 
-Мы проводили адаптацию между наборами ldalcmix (Смесь landcover и LoveDA) в качестве source набора
-И набора merged (Смесь картинок train и public)
+Мы проводили адаптацию между наборами ldalcmix (Смесь landcover и LoveDA) в качестве source набора                                                                                                                                                                     
+И набора merged (Смесь картинок train и public) в качестве target
 Ссылки на наборы:
 (Будут позже)
 
