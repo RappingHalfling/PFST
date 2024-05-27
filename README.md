@@ -55,7 +55,7 @@ line 104| data_root = 'path to test data'
 И набора merged (Смесь картинок train и public) в качестве target
 Ссылки на наборы:
 [ldalcmix](https://drive.google.com/file/d/1NfTUi4JVgX83nMnlmM8r8plO9rzWUcyD/view?usp=sharing)
-[merged]([https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing](https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing))
+[merged](https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing](https://drive.google.com/file/d/1NTg8OMLaH3_J1gsL1CNTw2S2dm0AMLx-/view?usp=sharing)
 
 ### Обучение и валидация
 Обучение запускается командой:
