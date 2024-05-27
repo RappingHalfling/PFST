@@ -68,6 +68,7 @@ python3 tools/train.py configs/pfst/pfst_rucode_RG3_deeplabv3plus_r50-d8.py
 python3 tools/test.py configs/pfst/pfst_rucode_RG3_deeplabv3plus_r50-d8.py work_dirs/path_to_checkpoint --work-dir work_dirs/path_to_dir_with_checkpoint --show-dir test_rucode --revise_checkpoint_key=True --eval='mIoU' --opacity 1
 ```
 После получения масок предикта требуется конвертировать их в .npy array, который можно получить, запустив скрипт convertor.py, внутри которого также требуется указать путь path_to_dir - расположение предиктов.
+
 Ссылка на нашу модель: 
 (Будет позже)
 
