@@ -19,7 +19,6 @@ from rsiseg.datasets import build_dataset
 from rsiseg.models import build_segmentor, build_train_model
 from rsiseg.utils import collect_env, get_root_logger, setup_multi_processes
 
-
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a segmentor')
     parser.add_argument('config', help='train config file path')

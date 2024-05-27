@@ -4,14 +4,19 @@
 # ---------------------------------------------------------------
 
 # dataset settings
+img_norm_cfg_target = dict(
+    mean=[68.17904790242513, 57.57212236192491, 31.216835021972656], std=[17.260323085515786, 21.38336250053211, 24.143107636874106], to_rgb=True)
+img_norm_cfg_source = dict(
+    mean=[87.682, 101.276, 94.203], std=[20.672, 24.662, 28.111], to_rgb=True)
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
+    
 crop_size = (512, 512)
 
 source_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', reduce_zero_label=True),
-    dict(type='Resize', img_scale=(1024, 1024), ratio_range=(0.5, 2.0)),
+    dict(type='Resize', img_scale=(512, 512), ratio_range=(0.5, 2.0)),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
     dict(type='RandomRotate90', prob=1.0),
     dict(type='RandomFlip', flip_ratio=0.5, direction='vertical'),
@@ -31,7 +36,7 @@ target_pipeline = [
          reduce_zero_label=False,
          load_feats=False,
          pseudo_ratio=0.0),
-    dict(type='Resize', img_scale=(576, 576), ratio_range=(0.5, 2.0)),
+    dict(type='Resize', img_scale=(512, 512), ratio_range=(0.5, 2.0)),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
     dict(type='RandomRotate90', prob=1.0),
     dict(type='RandomFlip', flip_ratio=0.5, direction='vertical'),
@@ -48,7 +53,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(576, 576),
+        img_scale=(1024, 1024),
         # MultiScaleFlipAug is disabled by not providing img_ratios and
         # setting flip=False
         # img_ratios=[0.5, 0.75, 1.0, 1.25, 1.5, 1.75],
@@ -62,9 +67,9 @@ test_pipeline = [
         ])
 ]
 
-dataset_type = 'ISPRSDataset'
-data_root_pots = '../data/Potsdam_IRRG_1024_mmlab'
-data_root_vaih = '../data/Vaihingen_IRRG_1024_mmlab'
+dataset_type = 'WaterDataset'
+data_root_landcover = '/home6/m_imm_freedata/Segmentation/Projects/DavydovIO_MGKN_2024/ldalcmix_color2'
+data_root_RG3 = '/home6/m_imm_freedata/Segmentation/Projects/Valiullin_MGKN_2024/merged'
 gt_seg_map_loader_cfg=dict(reduce_zero_label=True)
 data = dict(
     samples_per_gpu=2,
@@ -73,32 +78,32 @@ data = dict(
         type='UDADataset',
         source=dict(
             type=dataset_type,
-            data_root=data_root_vaih,
-            img_dir='img_dir/train',
-            ann_dir='ann_dir/train',
+            data_root=data_root_landcover,
+            img_dir='train/images',
+            ann_dir='train/gt',
             gt_seg_map_loader_cfg=gt_seg_map_loader_cfg,
             pipeline=source_pipeline),
         target=dict(
             type=dataset_type,
-            data_root=data_root_pots,
-            img_dir='img_dir/train',
-            ann_dir='ann_dir/train',
+            data_root=data_root_RG3,
+            img_dir='train/images',
+            ann_dir='train/gt',
             gt_seg_map_loader_cfg=gt_seg_map_loader_cfg,
             pipeline=target_pipeline),
         rare_class_sampling=None
     ),
     val=dict(
         type=dataset_type,
-        data_root=data_root_pots,
-        img_dir='img_dir/train',
-        ann_dir='ann_dir/train',
+        data_root=data_root_RG3,
+        img_dir='train/images',
+        ann_dir='train/gt',
         gt_seg_map_loader_cfg=gt_seg_map_loader_cfg,
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        data_root=data_root_pots,
-        img_dir='img_dir/val',
-        ann_dir='ann_dir/val',
+        data_root='/home6/m_imm_freedata/Segmentation/Projects/Valiullin_MGKN_2024/public_test',
+        img_dir='images',
+        ann_dir='gt',
         gt_seg_map_loader_cfg=gt_seg_map_loader_cfg,
         pipeline=test_pipeline),
     train_dataloader=dict(

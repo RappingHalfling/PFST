@@ -63,8 +63,8 @@ test_pipeline = [
 ]
 
 dataset_type = 'ISPRSDataset'
-data_root_pots = '../../Datasets/Dataset4EO/ISPRS/Potsdam_IRRG_1024_mmlab'
-data_root_vaih = '../../Datasets/Dataset4EO/ISPRS/Vaihingen_IRRG_1024_mmlab'
+data_root_pots = '../data/Potsdam_IRRG_1024_mmlab'
+data_root_vaih = '../data/Vaihingen_IRRG_1024_mmlab'
 gt_seg_map_loader_cfg=dict(reduce_zero_label=True)
 data = dict(
     samples_per_gpu=2,
