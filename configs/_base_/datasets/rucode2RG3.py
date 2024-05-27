@@ -68,8 +68,8 @@ test_pipeline = [
 ]
 
 dataset_type = 'WaterDataset'
-data_root_landcover = '/home6/m_imm_freedata/Segmentation/Projects/DavydovIO_MGKN_2024/ldalcmix_color2'
-data_root_RG3 = '/home6/m_imm_freedata/Segmentation/Projects/Valiullin_MGKN_2024/merged'
+data_root_source = '/home6/m_imm_freedata/Segmentation/Projects/DavydovIO_MGKN_2024/ldalcmix_color2'
+data_root_target = '/home6/m_imm_freedata/Segmentation/Projects/Valiullin_MGKN_2024/merged'
 gt_seg_map_loader_cfg=dict(reduce_zero_label=True)
 data = dict(
     samples_per_gpu=2,
@@ -78,14 +78,14 @@ data = dict(
         type='UDADataset',
         source=dict(
             type=dataset_type,
-            data_root=data_root_landcover,
+            data_root=data_root_source,
             img_dir='train/images',
             ann_dir='train/gt',
             gt_seg_map_loader_cfg=gt_seg_map_loader_cfg,
             pipeline=source_pipeline),
         target=dict(
             type=dataset_type,
-            data_root=data_root_RG3,
+            data_root=data_root_target,
             img_dir='train/images',
             ann_dir='train/gt',
             gt_seg_map_loader_cfg=gt_seg_map_loader_cfg,
@@ -94,7 +94,7 @@ data = dict(
     ),
     val=dict(
         type=dataset_type,
-        data_root=data_root_RG3,
+        data_root=data_root_target,
         img_dir='train/images',
         ann_dir='train/gt',
         gt_seg_map_loader_cfg=gt_seg_map_loader_cfg,
